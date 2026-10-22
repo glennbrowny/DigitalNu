@@ -1,0 +1,58 @@
+ErrorDocument 404 /404.html
+
+# --- Security headers (defense in depth) ---
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' https://cdn.jsdelivr.net; connect-src 'self' https://api.emailjs.com; frame-src https://www.google.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+    # À activer une fois le site servi en HTTPS (sinon les navigateurs ignorent cet en-tête de toute façon) :
+    # Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+</IfModule>
+
+# --- Compression des fichiers texte (plus léger et plus rapide à charger) ---
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json text/xml application/xml image/svg+xml
+</IfModule>
+
+# --- Mise en cache navigateur : les fichiers qui changent rarement (images, mp3,
+# librairies vendor) restent en cache longtemps ; le CSS/JS du site restent moins
+# longtemps car ils sont versionnés (main.css?v=...) donc invalidés à chaque mise à jour ;
+# le HTML n'est jamais mis en cache pour que le contenu soit toujours à jour. ---
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType text/javascript "access plus 1 week"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 month"
+    ExpiresByType audio/mpeg "access plus 1 month"
+</IfModule>
+
+# --- Block direct access to dotfiles (.htaccess, .DS_Store, .env, ...) ---
+<FilesMatch "^\.">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# --- Block direct access to sensitive/internal files.
+# Tout le projet a été aplati dans un seul dossier (voir demande utilisateur) : les
+# fichiers qui étaient auparavant protégés par un .htaccess de dossier (admin/, config/,
+# data/, vendor/) doivent maintenant être bloqués explicitement par leur nom ici, sinon
+# ils seraient servis publiquement au même titre que index.html.
+<FilesMatch "^(composer\.json|composer\.lock|Readme\.txt|package\.json|package-lock\.json|config\.php|mail-config\.php|reserved-dates\.json|reservations-log\.json|login-attempts\.json|rate-limit-.*\.json|form-errors\.log|installed\.json|installed\.php)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Deny from all
+    </IfModule>
+</FilesMatch>

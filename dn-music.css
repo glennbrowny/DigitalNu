@@ -1,0 +1,154 @@
+/* ============================================================
+   Bouton musique de fond — partagé par toutes les pages
+   (site principal + album photo). Logique : dn-music.js
+   ============================================================ */
+
+
+/*--------------------------------------------------------------
+# Music Toggle (now playing) — universel desktop + mobile
+--------------------------------------------------------------*/
+.music-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  right: 15px;
+  bottom: calc(75px + env(safe-area-inset-bottom, 0px));
+  z-index: 99998;
+  width: 50px;
+  height: 50px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-color), color-mix(in srgb, var(--accent-color), #000 25%));
+  box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--accent-color), transparent 20%);
+  opacity: 0.75;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+}
+
+.music-toggle:hover,
+.music-toggle:focus-visible {
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -8px color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+
+.music-toggle:focus-visible {
+  outline: 2px solid var(--contrast-color);
+  outline-offset: 3px;
+}
+
+.music-toggle:active {
+  transform: scale(0.92);
+  opacity: 0.9;
+}
+
+/* Halo qui respire autour du bouton pendant la lecture */
+.music-toggle::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-color);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.music-toggle.is-playing::after {
+  animation: dn-music-ring 2.4s ease-out infinite;
+}
+
+.music-toggle .music-icon-static {
+  font-size: 20px;
+  line-height: 0;
+  color: var(--contrast-color);
+  transition: opacity 0.3s ease;
+}
+
+.music-toggle .music-bars {
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  height: 18px;
+}
+
+.music-toggle .music-bars span {
+  display: block;
+  width: 3px;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--contrast-color);
+}
+
+.music-toggle.is-playing .music-icon-static {
+  display: none;
+}
+
+.music-toggle.is-playing .music-bars {
+  display: flex;
+}
+
+.music-toggle.is-playing .music-bars span {
+  animation: dn-music-bar 1s ease-in-out infinite;
+}
+
+.music-toggle.is-playing .music-bars span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.music-toggle.is-playing .music-bars span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.music-toggle.is-playing .music-bars span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.music-toggle.is-playing .music-bars span:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+@media (min-width: 992px) {
+  .music-toggle {
+    bottom: 15px;
+    right: 78px;
+  }
+}
+
+@keyframes dn-music-bar {
+  0%, 100% {
+    height: 6px;
+  }
+  50% {
+    height: 18px;
+  }
+}
+
+@keyframes dn-music-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-toggle.is-playing .music-bars span {
+    animation: none !important;
+    height: 14px;
+  }
+
+  .music-toggle.is-playing::after {
+    animation: none !important;
+  }
+}

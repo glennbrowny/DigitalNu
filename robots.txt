@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /data/
+Disallow: /forms/
+Disallow: /config/
+Disallow: /vendor/

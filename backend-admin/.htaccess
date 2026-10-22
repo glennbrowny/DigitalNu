@@ -1,0 +1,12 @@
+# Force HTTPS (obligatoire pour les cookies de session "secure"),
+# sauf en local (WAMP/localhost n'a pas de certificat HTTPS configuré).
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} !^localhost(:\d+)?$
+RewriteCond %{HTTP_HOST} !^127\.0\.0\.1(:\d+)?$
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+Options -Indexes
+php_flag display_errors off
+php_value upload_max_filesize 8M
+php_value post_max_size 10M

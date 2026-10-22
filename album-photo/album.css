@@ -1,0 +1,272 @@
+/* ============================================================
+   Album photo — personnalisation Digital Numérique
+   (couleurs et polices alignées sur le site principal)
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Roboto:wght@400;500&display=swap");
+
+:root {
+  --dn-accent: #1fb6c9;
+  --dn-dark: #0a0b0d;
+  --dn-heading: #0d1420;
+  --dn-text: #383d45;
+}
+
+body { font-family: "Roboto", system-ui, sans-serif; color: var(--dn-text); }
+h1, h2, h3, h4, h5, h6, .alime-projects-menu .portfolio-menu .btn { font-family: "Raleway", sans-serif; }
+
+.dn-accent { color: var(--dn-accent); }
+
+/* ---------- En-tête ---------- */
+.dn-brand { display: flex; align-items: center; gap: 12px; color: #fff; font-family: "Raleway", sans-serif; font-weight: 800; font-size: 20px; }
+.dn-brand:hover, .dn-brand:focus, .dn-brand > span { color: #fff; }
+.dn-brand img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+.main-header-area.sticky .dn-brand { color: #fff; }
+@media (max-width: 767px) { .dn-brand > span { display: none; } }
+
+/* ---------- Bandeau ---------- */
+.dn-kicker { color: var(--dn-accent); text-transform: uppercase; letter-spacing: 3px; font-size: 13px; font-weight: 500; margin-bottom: 8px; }
+
+/* ---------- Intro + barre d'outils ---------- */
+.dn-album-intro p { max-width: 640px; margin: 0 auto 36px; font-size: 16px; line-height: 1.7; }
+.alime-projects-menu .portfolio-menu .btn { margin-bottom: 12px; }
+.dn-filter-n { font-size: 11px; margin-left: 4px; color: var(--dn-accent); font-weight: 500; }
+
+.dn-album-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
+.dn-album-count { font-size: 14px; color: #8a919c; text-transform: uppercase; letter-spacing: 1px; }
+
+/* ---------- Boutons ---------- */
+.dn-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 26px; border-radius: 50px; border: 2px solid var(--dn-accent);
+  background: var(--dn-accent); color: #fff; font-weight: 500; font-size: 15px;
+  cursor: pointer; transition: all .3s ease; margin: 6px;
+}
+.dn-btn:hover, .dn-btn:focus { background: transparent; color: var(--dn-accent); }
+.dn-btn-outline { background: transparent; color: var(--dn-accent); }
+.dn-btn-outline:hover, .dn-btn-outline:focus { background: var(--dn-accent); color: #fff; }
+.dn-btn:disabled { opacity: .4; cursor: not-allowed; }
+.dn-album-toolbar .dn-btn { margin: 0; padding: 8px 20px; }
+
+/* ---------- Grille « mur de photos » (colonnes CSS) ---------- */
+.alime-portfolio.row { display: block; margin: 0; column-count: 4; column-gap: 20px; }
+@media (max-width: 1199px) { .alime-portfolio.row { column-count: 3; } }
+@media (max-width: 767px)  { .alime-portfolio.row { column-count: 2; column-gap: 12px; } }
+
+.dn-album-item {
+  break-inside: avoid; margin: 0 0 20px;
+  opacity: 0; transform: translateY(24px);
+  animation: dnRise .6s ease forwards;
+}
+@media (max-width: 767px) { .dn-album-item { margin-bottom: 12px; } }
+@keyframes dnRise { to { opacity: 1; transform: none; } }
+
+.dn-album-item .single-portfolio-content { display: block; border-radius: 6px; background: #e9ebee; }
+.dn-album-item img { display: block; height: auto; }
+.dn-album-item figcaption { font-size: 13px; color: #8a919c; padding: 8px 2px 0; }
+
+.single-portfolio-content .hover-content { display: flex; align-items: center; justify-content: center; }
+.dn-zoom {
+  width: 52px; height: 52px; border-radius: 50%; background: var(--dn-accent); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 20px;
+  transform: scale(.6); transition: transform .4s ease;
+}
+.single-portfolio-content:hover .dn-zoom, .single-portfolio-content:focus .dn-zoom { transform: scale(1); }
+.single-portfolio-content:hover img, .single-portfolio-content:focus img { transform: scale(1.06); }
+.single-portfolio-content:focus-visible { outline: 3px solid var(--dn-accent); outline-offset: 3px; }
+
+.dn-album-empty { padding: 40px 0; color: #8a919c; }
+#dnLoadMore { margin-top: 30px; }
+
+/* ---------- Appel à l'action ---------- */
+.dn-album-cta { background: var(--dn-dark); color: #aab4c8; padding: 80px 0; }
+.dn-album-cta h3 { color: #fff; font-size: 30px; margin-bottom: 12px; }
+.dn-album-cta p { margin-bottom: 28px; }
+
+/* ---------- Pied de page ---------- */
+.dn-footer-logo { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+.footer-content .social-info a { font-size: 18px; }
+@media (max-width: 767px) { .footer-content { flex-direction: column; gap: 18px; text-align: center; } }
+
+/* ---------- Visionneuse ---------- */
+.dn-mfp.mfp-bg { background: #050608; opacity: .95; }
+.dn-mfp .mfp-title { font-size: 14px; color: #dfe3ea; }
+.dn-mfp .mfp-counter { color: #aab4c8; }
+.dn-mfp-play {
+  position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 1046;
+  width: 52px; height: 52px; border-radius: 50%; border: 0;
+  background: var(--dn-accent); color: #fff; font-size: 24px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dn-album-item { animation: none; opacity: 1; transform: none; }
+  .single-portfolio-content img, .dn-zoom { transition: none; }
+}
+
+/* ---------- Bouton WhatsApp flottant (pas de bouton musique sur cette page) ---------- */
+body .wa-float { bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
+
+/* ============================================================
+   Motion design moderne de l'album
+   ============================================================ */
+:root { --accent-color: #1fb6c9; --contrast-color: #ffffff; } /* utilisés par le bouton musique partagé */
+
+/* ---------- Bandeau : halo lumineux qui dérive ---------- */
+.dn-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.dn-aurora::before,
+.dn-aurora::after {
+  content: "";
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .35;
+  mix-blend-mode: screen;
+}
+.dn-aurora::before { background: var(--dn-accent); left: -20vw; top: -30vw; animation: dnAurora 14s ease-in-out infinite alternate; }
+.dn-aurora::after { background: #7b5cff; right: -25vw; bottom: -40vw; animation: dnAurora 18s ease-in-out infinite alternate-reverse; }
+@keyframes dnAurora {
+  to { transform: translate(18vw, 10vw) scale(1.2); }
+}
+.breadcrumb-content { position: relative; z-index: 2; }
+.dn-kicker { animation: dnKicker 1.4s var(--dn-ease-out, ease) both; }
+@keyframes dnKicker {
+  from { letter-spacing: 12px; opacity: 0; }
+  to { letter-spacing: 3px; opacity: 1; }
+}
+
+/* ---------- Formes floues en arrière-plan de la grille ---------- */
+.alime-portfolio-area { position: relative; overflow: hidden; }
+.alime-portfolio-area > .container-fluid { position: relative; z-index: 1; }
+.dn-blob {
+  position: absolute;
+  z-index: 0;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .18;
+  pointer-events: none;
+}
+.dn-blob-1 { background: var(--dn-accent); top: 10%; left: -120px; animation: dnBlob 16s ease-in-out infinite alternate; }
+.dn-blob-2 { background: #7b5cff; bottom: 5%; right: -140px; animation: dnBlob 20s ease-in-out infinite alternate-reverse; }
+@keyframes dnBlob {
+  50% { transform: translate(120px, -80px) scale(1.15); }
+  to { transform: translate(-40px, 120px) scale(.9); }
+}
+
+/* ---------- Filtres : pastille qui glisse ---------- */
+.alime-projects-menu .portfolio-menu { position: relative; }
+.alime-projects-menu .portfolio-menu .btn { z-index: 1; transition: color .4s ease; }
+.alime-projects-menu .portfolio-menu .btn::after { display: none; }
+.alime-projects-menu .portfolio-menu .btn.active,
+.alime-projects-menu .portfolio-menu .btn.active .dn-filter-n { color: #fff; }
+.dn-filter-pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #5fd8e6, var(--dn-accent) 50%, #0f8a99);
+  box-shadow: 0 10px 24px -10px var(--dn-accent);
+  transition: transform .55s cubic-bezier(.22, 1, .36, 1), width .55s cubic-bezier(.22, 1, .36, 1), height .55s ease;
+}
+
+/* ---------- Grille : entrée et sortie dynamiques ---------- */
+.dn-album-item {
+  transform: translateY(40px) scale(.94);
+  filter: blur(6px);
+  animation: dnItemIn .8s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+@keyframes dnItemIn {
+  to { opacity: 1; transform: none; filter: none; }
+}
+.dn-album-item.is-leaving { animation: dnItemOut .26s ease forwards; }
+@keyframes dnItemOut {
+  from { opacity: 1; transform: none; filter: none; }
+  to { opacity: 0; transform: scale(.9); filter: blur(4px); }
+}
+
+/* Titre qui monte au survol */
+.single-portfolio-content .hover-content {
+  flex-direction: column;
+  gap: 12px;
+  background: linear-gradient(to top, rgba(10, 11, 13, .85), rgba(10, 11, 13, .25));
+}
+.dn-hover-title {
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 0 14px;
+  text-align: center;
+  transform: translateY(16px);
+  opacity: 0;
+  transition: transform .45s cubic-bezier(.22, 1, .36, 1) .05s, opacity .45s ease .05s;
+}
+.single-portfolio-content:hover .dn-hover-title,
+.single-portfolio-content:focus .dn-hover-title { transform: none; opacity: 1; }
+
+/* ---------- Appel à l'action : lumière en mouvement ---------- */
+.dn-album-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.dn-album-cta::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: -1;
+  background: conic-gradient(from 0deg, transparent 0 70%, rgba(31, 182, 201, .35) 80%, transparent 90%);
+  animation: dnSpin 12s linear infinite;
+}
+@keyframes dnSpin { to { transform: rotate(1turn); } }
+
+/* ---------- Visionneuse : ouverture zoomée + barre du diaporama ---------- */
+.dn-mfp.mfp-bg { opacity: 0; transition: opacity .35s ease; }
+.dn-mfp.mfp-bg.mfp-ready { opacity: .95; }
+.dn-mfp.mfp-bg.mfp-removing { opacity: 0; }
+.dn-mfp .mfp-content { opacity: 0; transform: scale(.88); transition: opacity .35s ease, transform .35s cubic-bezier(.22, 1, .36, 1); }
+.dn-mfp.mfp-ready .mfp-content { opacity: 1; transform: none; }
+.dn-mfp.mfp-removing .mfp-content { opacity: 0; transform: scale(.94); }
+.dn-mfp img.mfp-img { animation: dnSlideIn .5s cubic-bezier(.22, 1, .36, 1); }
+@keyframes dnSlideIn {
+  from { opacity: 0; transform: scale(1.04); }
+  to { opacity: 1; transform: none; }
+}
+.dn-mfp-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1046;
+  height: 3px;
+  background: rgba(255, 255, 255, .12);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.dn-mfp.is-sliding .dn-mfp-progress { opacity: 1; }
+.dn-mfp-progress span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--dn-accent);
+  box-shadow: 0 0 10px var(--dn-accent);
+}
+.dn-mfp.is-sliding .dn-mfp-progress span { animation: dnProgress 4s linear forwards; }
+@keyframes dnProgress { to { width: 100%; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .dn-aurora::before, .dn-aurora::after, .dn-blob, .dn-kicker,
+  .dn-album-cta::before, .dn-mfp img.mfp-img { animation: none; }
+  .dn-album-item, .dn-album-item.is-leaving { animation: none; opacity: 1; filter: none; transform: none; }
+  .dn-filter-pill, .dn-mfp .mfp-content, .dn-mfp.mfp-bg { transition: none; }
+}

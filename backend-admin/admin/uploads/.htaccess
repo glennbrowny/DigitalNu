@@ -1,0 +1,6 @@
+# Les fichiers uploadés ne doivent jamais être interprétés comme du code,
+# même si un fichier malveillant passait la validation MIME.
+<FilesMatch "\.(php|phar|phtml|php\d?)$">
+  Require all denied
+</FilesMatch>
+Options -Indexes -ExecCGI

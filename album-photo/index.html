@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Album photo | Digital Numerique</title>
+    <meta name="description" content="L'album photo de Digital Numérique : mariages, portraits, événements et paysages photographiés à Libreville et au Gabon.">
+
+    <!-- Open Graph / réseaux sociaux -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Digital Numerique">
+    <meta property="og:title" content="Album photo | Digital Numerique">
+    <meta property="og:description" content="Mariages, portraits, événements et paysages : découvrez l'album photo complet de Digital Numérique.">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Favicon (logo du site principal) -->
+    <link rel="icon" href="../logo.jpg">
+    <link rel="apple-touch-icon" href="../logo.jpg">
+
+    <!-- Stylesheet du template + personnalisation Digital Numérique -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../bootstrap-icons.css">
+    <link rel="stylesheet" href="album.css?v=20261022-5">
+    <link rel="stylesheet" href="../dn-motion.css?v=20261022-5">
+    <link rel="stylesheet" href="../dn-music.css?v=20261022-5">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header-area">
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <nav class="classy-navbar justify-content-between" id="alimeNav">
+
+                        <!-- Logo : renvoie au site principal -->
+                        <a class="nav-brand dn-brand" href="../index.html">
+                            <img src="../logo.jpg" alt="Digital Numerique">
+                            <span><span class="dn-accent">Digital</span> Numerique</span>
+                        </a>
+
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <div class="classy-menu">
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li><a href="../index.html">Accueil</a></li>
+                                    <li><a href="../index.html#services">Services</a></li>
+                                    <li><a href="../index.html#portfolio">Portfolio</a></li>
+                                    <li class="active"><a href="./index.html">Album photo</a></li>
+                                    <li><a href="../index.html#reservation">Réservation</a></li>
+                                    <li><a href="../index.html#contact">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bandeau -->
+    <section class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(photos/mariage-01.jpg);">
+        <span class="dn-aurora" aria-hidden="true"></span>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                        <p class="dn-kicker">Extension du portfolio</p>
+                        <h2 class="page-title">Album photo</h2>
+                        <nav aria-label="Fil d'Ariane">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="../index.html">Accueil</a></li>
+                                <li class="breadcrumb-item"><a href="../index.html#portfolio">Portfolio</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Album photo</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Album -->
+    <main class="alime-portfolio-area section-padding-80 clearfix">
+        <span class="dn-blob dn-blob-1" aria-hidden="true"></span>
+        <span class="dn-blob dn-blob-2" aria-hidden="true"></span>
+        <div class="container-fluid">
+
+            <div class="dn-album-intro text-center" data-reveal>
+                <p>Toutes nos séances, au-delà de la sélection du portfolio. Filtrez par album, cliquez sur une photo pour l'agrandir ou lancez le diaporama.</p>
+            </div>
+
+            <!-- Filtres (générés depuis photos.js) -->
+            <div class="alime-projects-menu" data-reveal>
+                <div class="portfolio-menu text-center" id="dnAlbumFilters" role="toolbar" aria-label="Filtrer par album"></div>
+            </div>
+
+            <!-- Barre d'outils -->
+            <div class="dn-album-toolbar" data-reveal>
+                <span class="dn-album-count" id="dnAlbumCount" aria-live="polite"></span>
+                <button type="button" class="dn-btn dn-btn-outline" id="dnSlideshowBtn">
+                    <i class="bi bi-play-fill"></i> Diaporama
+                </button>
+            </div>
+
+            <!-- Grille (générée depuis photos.js) -->
+            <div class="row alime-portfolio" id="dnAlbumGrid"></div>
+
+            <p class="dn-album-empty text-center" id="dnAlbumEmpty" hidden>Aucune photo dans cet album pour le moment.</p>
+
+            <div class="text-center">
+                <button type="button" class="dn-btn" id="dnLoadMore" hidden>
+                    Voir plus de photos <i class="bi bi-arrow-down"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Appel à l'action -->
+    <section class="dn-album-cta text-center">
+        <div class="container" data-reveal>
+            <h3>Un projet photo en tête ?</h3>
+            <p>Mariage, portrait, événement d'entreprise : réservez votre séance avec Digital Numérique.</p>
+            <a href="../index.html#reservation" class="dn-btn">Réserver une séance</a>
+            <a href="../index.html#portfolio" class="dn-btn dn-btn-outline">Retour au portfolio</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-content d-flex align-items-center justify-content-between">
+                        <div class="copywrite-text">
+                            <p>&copy; <span id="dnYear"></span> Digital Numerique — Libreville, Gabon.<br>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Template <a href="https://colorlib.com" target="_blank" rel="noopener">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                        </div>
+                        <div class="footer-logo">
+                            <a href="../index.html"><img src="../logo.jpg" alt="Digital Numerique" class="dn-footer-logo"></a>
+                        </div>
+                        <div class="social-info">
+                            <a href="https://m.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/?deoia=1" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@numeriqued" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/alime.bundle.js"></script>
+
+    <!-- Liste des photos (à modifier pour ajouter vos photos) -->
+    <script src="photos.js"></script>
+    <script src="album.js?v=20261022-5"></script>
+    <script src="../dn-music.js?v=20261022-5"></script>
+    <script src="../dn-motion.js?v=20261022-5"></script>
+    <script src="../dn-whatsapp.js?v=20261022-5"></script>
+</body>
+
+</html>

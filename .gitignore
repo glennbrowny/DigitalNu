@@ -1,0 +1,11 @@
+# Sauvegardes d'images (non utilisées par le site)
+*.bak
+
+# Outils du template de l'album photo
+node_modules/
+.sass-cache/
+
+# Fichiers système
+Thumbs.db
+desktop.ini
+.DS_Store
