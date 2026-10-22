@@ -270,3 +270,7 @@ body .wa-float { bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
   .dn-album-item, .dn-album-item.is-leaving { animation: none; opacity: 1; filter: none; transform: none; }
   .dn-filter-pill, .dn-mfp .mfp-content, .dn-mfp.mfp-bg { transition: none; }
 }
+
+/* ---------- Pied de page : place pour les bulles musique + WhatsApp ---------- */
+.footer-area { padding-bottom: 90px; }
+@media (max-width: 991px) { .footer-area { padding-bottom: 150px; } }
